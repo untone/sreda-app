@@ -23,3 +23,15 @@ a {
   color: #0080ff;
   text-decoration: none;
 }
+
+main {
+  margin: 0 auto;
+  padding: 80px 0;
+  max-width: 500px;
+}
+
+@media (min-width: 768px) {
+  main {
+    padding: 120px 0;
+  }
+}

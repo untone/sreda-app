@@ -9,9 +9,7 @@ import {
   FETCH_REPOS_SUCCEEDED,
   FETCH_REPOS_FAILURE,
   LOCATION_CHANGE,
-  SET_NAME,
-  SET_LICENSE,
-  SET_PAGE
+  SET_QUERY
 } from './actions';
 
 const getState = (state, key) => state[key];
@@ -38,11 +36,9 @@ function* getLicenses() {
 };
 
 function* getQuery({payload}) {
-  const {search, page} = parseQuery(payload.location.search);
   yield put({
-    type: SET_NAME,
-    name: search,
-    page
+    type: SET_QUERY,
+    payload: parseQuery(payload.location.search)
   });
 };
 
@@ -50,11 +46,11 @@ function* getRepos({ payload }) {
   yield put({
     type: FETCH_REPOS_STARTED
   });
-  const {date, license, name, page} = yield select(getState, 'repos');
+  const {date, license, search, page} = yield select(getState, 'repos');
   yield put(showLoading());
   try {
     const {items, total_count} = yield call(fetchRepos, {
-      date, license, name, page
+      date, license, search, page
     });
     yield put({
       type: FETCH_REPOS_SUCCEEDED,
@@ -73,8 +69,8 @@ function* getRepos({ payload }) {
 
 function* repos() {
   yield takeLatest(LOCATION_CHANGE, getQuery);
-  yield takeLatest([SET_NAME, SET_LICENSE], getRepos);
-  yield takeLatest(SET_NAME, getLicenses);
+  yield takeLatest(SET_QUERY, getRepos);
+  yield takeLatest(SET_QUERY, getLicenses);
 }
 
 export default repos;

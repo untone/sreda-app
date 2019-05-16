@@ -1,48 +1,52 @@
-const baseURL = 'https://api.github.com';
-const perPage = 20;
-const maxTotal = 1000;
+import { baseURL, perPage, maxTotal } from './constants';
+import { urlParams } from './utils';
 
 // Github invalidate tokens found in repo files so we encode it
 const token = atob('ZDM2NmZhZTBjNjM2NGZmZjEzMzkwODMzNTlmMTk1OTZkZjcxMjE2Yg==');
 
-const searchParams = params => {
-  let searchQuery = new URLSearchParams(params);
-  searchQuery.append('access_token', token);
-  return searchQuery.toString();
+const serializeParams = args => {
+  let params = urlParams(args);
+  return params.toString();
 };
 
-const parseQuery = (string) => {
-  const params = new URLSearchParams(string);
-  const search = params.get('search') || '';
-  let page = params.get('page') || 1;
-  page = parseInt(page);
-  return {search, page};
+const parseQuery = (aprgs) => {
+  const params = urlParams(aprgs);
+  let result = {};
+  for (let [key, value] of params) {
+    result[key] = key === 'page' ? parseInt(value, 10) : value;
+  }
+  return result;
 };
 
 const fetchData = (endpoint, args = {}) => {
   let url = `${baseURL}${endpoint}`;
   if (Object.keys(args).length) {
-    const {date, license, name, page} = args;
+    const {date, license, search, page} = args;
     const created = `+created:">${date.toISOString().slice(0, 10)}"`;
     const lang = `+language:javascript`;
     const filter = license.length ? `+license:${license}` : '';
-    const query = `${name}${created}${lang}${filter}`;
+    const query = `${search}${created}${lang}${filter}`;
     const params = {
       sort: 'stars',
       order: 'desc',
       per_page: perPage,
       page: page
     };
-    url = `${url}?q=${query}&${searchParams(params)}`;
+    url = `${url}?q=${query}&${serializeParams(params)}&access_token=${token}`;
   }
-  return fetch(url)
+  return fetch(`${url}`)
     .then(response => response.json())
     .catch(error => error.message);
 };
 
 const fetchLicenses = async () => {
-  const data = await fetchData('/licenses');
-  return data;
+  const savedData = sessionStorage.getItem('licenses');
+  const parsedData = JSON.parse(savedData) || {};
+  if (Object.keys(parsedData).length) {
+    return parsedData;
+  } else {
+    return await fetchData('/licenses');
+  }
 };
 
 const fetchRepos = async (args) => {

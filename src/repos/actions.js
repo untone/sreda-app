@@ -5,25 +5,7 @@ const FETCH_LICENSES_FAILED = 'REPOS/FETCH_LICENSES_FAILED';
 const FETCH_REPOS_STARTED = 'REPOS/FETCH_REPOS_STARTED';
 const FETCH_REPOS_SUCCEEDED = 'REPOS/FETCH_REPOS_SUCCEEDED';
 const FETCH_REPOS_FAILURE = 'REPOS/FETCH_REPOS_FAILURE';
-const SET_NAME = 'REPOS/SET_NAME';
-const SET_LANG = 'REPOS/SET_LANG';
-const SET_LICENSE = 'REPOS/SET_SET_LICENSE';
-const SET_PAGE = 'REPOS/SET_PAGE';
-
-const setLang = language => ({
-  type: SET_LANG,
-  language
-});
-
-const setLicense = license => ({
-  type: SET_LICENSE,
-  license
-});
-
-const setPage = page => ({
-  type: SET_PAGE,
-  page
-});
+const SET_QUERY = 'REPOS/SET_QUERY';
 
 export {
   LOCATION_CHANGE,
@@ -33,11 +15,5 @@ export {
   FETCH_REPOS_STARTED,
   FETCH_REPOS_SUCCEEDED,
   FETCH_REPOS_FAILURE,
-  SET_NAME,
-  SET_LANG,
-  SET_LICENSE,
-  SET_PAGE,
-  setLang,
-  setLicense,
-  setPage
+  SET_QUERY,
 };

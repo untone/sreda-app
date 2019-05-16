@@ -4,9 +4,7 @@ import {
   FETCH_REPOS_STARTED,
   FETCH_REPOS_SUCCEEDED,
   FETCH_REPOS_FAILURE,
-  SET_NAME,
-  SET_LICENSE,
-  SET_PAGE,
+  SET_QUERY
 } from './actions';
 
 const monthAgo = () => {
@@ -23,28 +21,25 @@ const initialState = {
   inited: false,
   loading: false,
   message: '',
-  name: '',
+  search: '',
   page: 1,
   total: 0
 };
 
-const repos = (
-  state = initialState,
-  {
+const repos = (state = initialState, action) => {
+  const {
     items,
     message,
-    name,
-    license,
     licenses,
-    page,
+    payload,
     type,
     total_count
-  }) => {
+  } = action;
   switch (type) {
     case FETCH_LICENSES_SUCCEEDED:
       return {
         ...state,
-        licenses
+        licenses: [{key: 'all', spdx_id: 'All'}, ...licenses]
       };
     case FETCH_REPOS_STARTED:
       return {
@@ -65,20 +60,12 @@ const repos = (
         loading: false,
         message
       };
-    case SET_LICENSE:
+    case SET_QUERY:
       return {
         ...state,
-        license
-      };
-    case SET_NAME:
-      return {
-        ...state,
-        name
-      };
-    case SET_PAGE:
-      return {
-        ...state,
-        page
+        search: payload.search || state.search,
+        license: payload.license === 'all' ? '' : payload.license || state.license,
+        page: payload.page || state.page
       };
     default:
       return state;
