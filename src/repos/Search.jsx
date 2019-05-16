@@ -17,10 +17,6 @@ const Search = withRouter(({
     }
   }) => {
     if (which === 13 && value !== search) {
-      // let params = urlParams(history.location.search);
-      // params.set('search', value);
-      // params.delete('page');
-      // const path = params.toString();
       history.push(searchParams(history, ['search', value], 'page'));
     }
   };
