@@ -37,6 +37,7 @@ const repos = (state = initialState, action) => {
   } = action;
   switch (type) {
     case FETCH_LICENSES_SUCCEEDED:
+      sessionStorage.setItem('licenses', JSON.stringify(licenses));
       return {
         ...state,
         licenses: [{key: 'all', spdx_id: 'All'}, ...licenses]
