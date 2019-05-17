@@ -5,7 +5,7 @@ import { ConnectedRouter } from 'connected-react-router';
 import LoadingBar from 'react-redux-loading-bar';
 import { configureStore, history } from './store';
 
-import Repos from './repos/Repos';
+import ReposContainer from './repos/ReposContainer';
 const store = configureStore();
 
 const style = {
@@ -20,7 +20,7 @@ const App = () => (
     <ConnectedRouter history={history}>
       <LoadingBar style={style}/>
       <Switch>
-        <Route path='/' component={Repos} />
+        <Route path='/' component={ReposContainer} />
       </Switch>
     </ConnectedRouter>
   </Provider>

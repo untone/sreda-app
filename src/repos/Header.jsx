@@ -1,12 +1,19 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { maxTotal } from '../constants';
-import { displayTotal, searchParams } from '../utils';
+import { displayTotal } from '../utils';
 import style from './repos.module.css';
 
 
-const Header = ({history, license, licenses, total}) => {
+const Header = ({
+  history,
+  license,
+  licenses,
+  onChange,
+  total
+}) => {
   const onLicenseChange = ({target: {value}}) => {
-    history.push(searchParams(history, ['license', value]));
+    onChange(history, ['license', value]);
   };
   const licenseItem = ({key, spdx_id}) => (
     <option key={key} value={key}>
@@ -41,3 +48,7 @@ const Header = ({history, license, licenses, total}) => {
 };
 
 export default Header;
+
+Header.propTypes = {
+  props: PropTypes.object
+};

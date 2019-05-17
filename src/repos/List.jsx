@@ -1,4 +1,6 @@
 import React, { Fragment, memo } from 'react';
+import PropTypes from 'prop-types';
+
 import Item from './Item';
 
 import style from './repos.module.css';
@@ -20,3 +22,7 @@ const List = ({items, loading}) => (
 );
 
 export default memo(List);
+
+List.propTypes = {
+  props: PropTypes.object
+};

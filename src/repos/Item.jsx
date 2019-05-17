@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import Octicon, { Law, Star } from '@githubprimer/octicons-react';
 
 import style from './repos.module.css';
@@ -26,3 +27,7 @@ const Item = ({full_name, id, html_url, license = {name: ''}, stargazers_count})
 );
 
 export default Item;
+
+Item.propTypes = {
+  props: PropTypes.object
+};

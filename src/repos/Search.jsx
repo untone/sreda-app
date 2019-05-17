@@ -1,14 +1,11 @@
-import React, { memo } from 'react';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import { searchParams } from '../utils';
+import React from 'react';
 
 import style from './repos.module.css';
 
-const Search = withRouter(({
-  dispatch,
+const Search = ({
   history,
-  search
+  onChange,
+  search,
 }) => {
   const handleChange = ({
     nativeEvent: {
@@ -16,8 +13,8 @@ const Search = withRouter(({
       which
     }
   }) => {
-    if (which === 13 && value !== search) {
-      history.push(searchParams(history, ['search', value], 'page'));
+    if (which === 13) {
+      onChange(history, ['search', value], 'page');
     }
   };
   return (
@@ -33,8 +30,6 @@ const Search = withRouter(({
       />
     </header>
   );
-});
+};
 
-const mapStateToProps = state => state.repos;
-
-export default connect(mapStateToProps)(memo(Search));
+export default Search;
