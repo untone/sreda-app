@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "cce074cb5eb246859076773bda554ec2",
+    "revision": "c796158ae9ee4067b4e5019e0bc5b617",
     "url": "/sreda-app/index.html"
   },
   {
-    "revision": "20d53c3ca90fbb2a74b7",
+    "revision": "75e1aff0d3364209a2c9",
     "url": "/sreda-app/static/css/main.269ce55c.chunk.css"
   },
   {
-    "revision": "d5602cc2dae4155a2558",
-    "url": "/sreda-app/static/js/2.4b60735c.chunk.js"
+    "revision": "2f9ce75dd7214d62b4fb",
+    "url": "/sreda-app/static/js/2.2fb3298f.chunk.js"
   },
   {
-    "revision": "20d53c3ca90fbb2a74b7",
-    "url": "/sreda-app/static/js/main.43be8c10.chunk.js"
+    "revision": "75e1aff0d3364209a2c9",
+    "url": "/sreda-app/static/js/main.fe5c3b9d.chunk.js"
   },
   {
     "revision": "c6098fd3360d2794c9e8",

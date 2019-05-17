@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/sreda-app/static/css/main.269ce55c.chunk.css",
-    "main.js": "/sreda-app/static/js/main.43be8c10.chunk.js",
-    "main.js.map": "/sreda-app/static/js/main.43be8c10.chunk.js.map",
+    "main.js": "/sreda-app/static/js/main.fe5c3b9d.chunk.js",
+    "main.js.map": "/sreda-app/static/js/main.fe5c3b9d.chunk.js.map",
     "runtime~main.js": "/sreda-app/static/js/runtime~main.d7df3d8e.js",
     "runtime~main.js.map": "/sreda-app/static/js/runtime~main.d7df3d8e.js.map",
-    "static/js/2.4b60735c.chunk.js": "/sreda-app/static/js/2.4b60735c.chunk.js",
-    "static/js/2.4b60735c.chunk.js.map": "/sreda-app/static/js/2.4b60735c.chunk.js.map",
+    "static/js/2.2fb3298f.chunk.js": "/sreda-app/static/js/2.2fb3298f.chunk.js",
+    "static/js/2.2fb3298f.chunk.js.map": "/sreda-app/static/js/2.2fb3298f.chunk.js.map",
     "index.html": "/sreda-app/index.html",
-    "precache-manifest.545c43d1ee15487efa1a49ea8b4a4802.js": "/sreda-app/precache-manifest.545c43d1ee15487efa1a49ea8b4a4802.js",
+    "precache-manifest.b3cf9d44e41bb48952c121af44e75fdb.js": "/sreda-app/precache-manifest.b3cf9d44e41bb48952c121af44e75fdb.js",
     "service-worker.js": "/sreda-app/service-worker.js",
     "static/css/main.269ce55c.chunk.css.map": "/sreda-app/static/css/main.269ce55c.chunk.css.map"
   }

@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/sreda-app/precache-manifest.545c43d1ee15487efa1a49ea8b4a4802.js"
+  "/sreda-app/precache-manifest.b3cf9d44e41bb48952c121af44e75fdb.js"
 );
 
 self.addEventListener('message', (event) => {
