@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Pagination from 'rc-pagination';
 import localeInfo from 'rc-pagination/lib/locale/ru_RU'
-import { withRouter, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Octicon, { ChevronLeft, ChevronRight } from '@githubprimer/octicons-react';
 
 import { maxTotal, perPage } from '../constants';
@@ -9,7 +10,7 @@ import { displayTotal, searchParams } from '../utils';
 
 import style from './repos.module.css';
 
-const Pager = withRouter(({display, history, page, total}) => {
+const Pager = ({history, page, total}) => {
   const pagerItem = (current, type) => {
     let path = searchParams(history, ['page', current]);
     let display = displayTotal(current);
@@ -33,7 +34,7 @@ const Pager = withRouter(({display, history, page, total}) => {
     );
   };
 
-  if (!display) {
+  if (!total) {
     return null;
   }
 
@@ -42,7 +43,7 @@ const Pager = withRouter(({display, history, page, total}) => {
       locale={localeInfo}
       className={style.pagination}
       hideOnSinglePage
-      current={page}
+      defaultCurrent={page}
       itemRender={pagerItem}
       pageSize={perPage}
       showLessItems
@@ -50,6 +51,10 @@ const Pager = withRouter(({display, history, page, total}) => {
       showPrevNextJumpers={false}
     />
   );
-});
+};
 
 export default Pager;
+
+Pager.propTypes = {
+  props: PropTypes.object
+};
