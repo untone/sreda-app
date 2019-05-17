@@ -64,7 +64,7 @@ const repos = (state = initialState, action) => {
     case SET_QUERY:
       return {
         ...state,
-        search: payload.search || state.search,
+        search: payload.search,
         license: payload.license === 'all' ? '' : payload.license || state.license,
         page: payload.page || state.page
       };
